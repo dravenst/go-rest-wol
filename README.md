@@ -4,11 +4,11 @@ A HTTP server who sends a Wake On LAN package on an HTTP request.
 
 ### Docker Image
 
-[![](https://images.microbadger.com/badges/version/dabondi/go-rest-wol.svg)](https://hub.docker.com/repository/docker/dabondi/go-rest-wol "https://hub.docker.com/repository/docker/dabondi/go-rest-wol") [![](https://images.microbadger.com/badges/image/dabondi/go-rest-wol.svg)](https://hub.docker.com/repository/docker/dabondi/go-rest-wol "https://hub.docker.com/repository/docker/dabondi/go-rest-wol")
+[![](https://images.microbadger.com/badges/version/dabondi/go-rest-wol.svg)](https://hub.docker.com/repository/docker/dravenst/go-rest-wol "https://hub.docker.com/repository/docker/dravenst/go-rest-wol") [![](https://images.microbadger.com/badges/image/dabondi/go-rest-wol.svg)](https://hub.docker.com/repository/docker/dravenst/go-rest-wol "https://hub.docker.com/repository/docker/dravenst/go-rest-wol")
 
-### Simple bootstrap UI for easy usage
+### Modifed to use simpler default UI for easy usage
 
-![Screenshot](https://github.com/daBONDi/go-rest-wol/raw/master/screenshot.PNG)
+![Screenshot](https://github.com/dravenst/go-rest-wol/raw/master/screenshot.PNG)
 
 ### Simple REST API to let a machine wake someone up
 
@@ -51,9 +51,12 @@ Computer2,2D-F2-3D-06-17-00,192.168.10.254:9
 Computer3,FF-B3-95-62-1C-DD,192.168.10.254:9
 ```
 
+### Defaulted with Recommended Synology/NAS Settings
+network_mode=host (this was required to get my Synology to work)
+
 ## Docker
 
-**Docker Image:** dabondi/go-rest-wol
+**Docker Image:** dravenst/go-rest-wol
 
 ```
 docker build -t go-rest-wol .
@@ -62,18 +65,14 @@ docker run go-rest-wol
 If you want to run it on a different port (i.e.: 6969) and also want to provide the CSV file on your host:
 
 ```
-docker run -p 6969:8080 -v $(pwd)/externall-file-on-host.csv:/app/computer.csv dabondi/go-rest-wol
+docker run -p 6969:8080 -v $(pwd)/externall-file-on-host.csv:/app/computer.csv dravenst/go-rest-wol
 ```
 
 If you want to run the WOL Webserver Process in the Webserver on a different Port:
 
 ```
 # Used if you run in Network Host Mode
-docker run -e "WOLHTTPPORT=9090" -p 9090:9090 -v $(pwd)/externall-file-on-host.csv:/app/computer.csv dabondi/go-rest-wol
+docker run -e "WOLHTTPPORT=9090" -p 9090:9090 -v $(pwd)/externall-file-on-host.csv:/app/computer.csv dravenst/go-rest-wol
 ```
 
-This was a good exercise to learn Golang (and refresh my Docker skills).
-
-Thx https://github.com/sabhiram/go-wol for the WOL code, sorry that I stole it from you, because I got no clue how I can inject it into my program. :-(
-
-**If you have any good ideas, I'm open for pull requests.**
+Thx https://github.com/dabondi/go-rest-wol https://github.com/sabhiram/go-wol for the WOL code
