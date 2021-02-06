@@ -56,11 +56,11 @@ Computer3,FF-B3-95-62-1C-DD,192.168.10.254:9
 
 ### Recommended Synology/NAS Settings
 <ul>
-<li>>Update network_mode=host (host mode was required to get my Synology NAS to work)
-<li>Add volume mapping to directory where you maintain/update your own custom computer.csv file
-<li>Add WOLFILE environmet variable path to map to a new computer.csv location
-<li>Add WOLHTTPPORT environment variable with unused port on Synology
-<li>Add Control Panel -> Application Portal -> Reverse Proxy to support port mapping to this port for new hostname (e.g. wol.example.com)
+<li>Update network_mode=host in container config (host mode was required to get my Synology NAS to work)
+<li>Add volume mapping to directory where you maintain/update your own custom computer.csv file (e.g. /docker/wol -> /data)
+<li>Add WOLFILE container config environment variable to map to the computer.csv location (e.g. /data/computer.csv)
+<li>Add WOLHTTPPORT container config environment variable with unused port on Synology/NAS (e.g. 28080)
+<li>Add Control Panel -> Application Portal -> Reverse Proxy to support port mapping to this port for new hostname (e.g. wol.example.com -> localhost:28080 on both http and https)
 </ul>
 
 Many Thanks to https://github.com/dabondi/go-rest-wol https://github.com/sabhiram/go-wol for starting this effort and the WOL code!
