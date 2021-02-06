@@ -4,7 +4,10 @@ A HTTP server that sends a Wake On LAN package on an HTTP request.
 
 ### Docker Image
 
-[](https://hub.docker.com/repository/docker/dravenst/go-rest-wol "https://hub.docker.com/repository/docker/dravenst/go-rest-wol") [](https://hub.docker.com/repository/docker/dravenst/go-rest-wol "https://hub.docker.com/repository/docker/dravenst/go-rest-wol")
+https://hub.docker.com/repository/docker/dravenst/go-rest-wol
+
+### GitHub Repository
+https://github.com/dravenst/go-rest-wol
 
 ### Modifed to use simpler default UI for easy usage
 
@@ -52,11 +55,12 @@ Computer3,FF-B3-95-62-1C-DD,192.168.10.254:9
 ```
 
 ### Recommended Synology/NAS Settings
-Update network_mode=host (host mode was required to get my Synology NAS to work)
-Add volume mapping to directory where you maintain/update your own custom computer.csv file
-Add WOLFILE environmet variable path to map to a new computer.csv location
-Add WOLHTTPPORT environment variable with unused port on Synology
-Add Control Panel -> Application Portal -> Reverse Proxy to support port mapping to this port for new hostname (e.g. wol.example.com)
-
+<ul>
+<li>>Update network_mode=host (host mode was required to get my Synology NAS to work)
+<li>Add volume mapping to directory where you maintain/update your own custom computer.csv file
+<li>Add WOLFILE environmet variable path to map to a new computer.csv location
+<li>Add WOLHTTPPORT environment variable with unused port on Synology
+<li>Add Control Panel -> Application Portal -> Reverse Proxy to support port mapping to this port for new hostname (e.g. wol.example.com)
+</ul>
 
 Many Thanks to https://github.com/dabondi/go-rest-wol https://github.com/sabhiram/go-wol for starting this effort and the WOL code!
