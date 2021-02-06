@@ -1,10 +1,10 @@
-# GoLang HTTP Server for Remote WOL Requesting from an CSV Computer List
+# HTTP Server for Remote WOL Requesting from a CSV Computer List
 
-A HTTP server who sends a Wake On LAN package on an HTTP request.
+A HTTP server that sends a Wake On LAN package on an HTTP request.
 
 ### Docker Image
 
-[![](https://images.microbadger.com/badges/version/dabondi/go-rest-wol.svg)](https://hub.docker.com/repository/docker/dravenst/go-rest-wol "https://hub.docker.com/repository/docker/dravenst/go-rest-wol") [![](https://images.microbadger.com/badges/image/dabondi/go-rest-wol.svg)](https://hub.docker.com/repository/docker/dravenst/go-rest-wol "https://hub.docker.com/repository/docker/dravenst/go-rest-wol")
+[](https://hub.docker.com/repository/docker/dravenst/go-rest-wol "https://hub.docker.com/repository/docker/dravenst/go-rest-wol") [](https://hub.docker.com/repository/docker/dravenst/go-rest-wol "https://hub.docker.com/repository/docker/dravenst/go-rest-wol")
 
 ### Modifed to use simpler default UI for easy usage
 
@@ -51,28 +51,12 @@ Computer2,2D-F2-3D-06-17-00,192.168.10.254:9
 Computer3,FF-B3-95-62-1C-DD,192.168.10.254:9
 ```
 
-### Defaulted with Recommended Synology/NAS Settings
-network_mode=host (this was required to get my Synology to work)
+### Recommended Synology/NAS Settings
+Update network_mode=host (host mode was required to get my Synology NAS to work)
+Add volume mapping to directory where you maintain/update your own custom computer.csv file
+Add WOLFILE environmet variable path to map to a new computer.csv location
+Add WOLHTTPPORT environment variable with unused port on Synology
+Add Control Panel -> Application Portal -> Reverse Proxy to support port mapping to this port for new hostname (e.g. wol.example.com)
 
-## Docker
 
-**Docker Image:** dravenst/go-rest-wol
-
-```
-docker build -t go-rest-wol .
-docker run go-rest-wol
-```
-If you want to run it on a different port (i.e.: 6969) and also want to provide the CSV file on your host:
-
-```
-docker run -p 6969:8080 -v $(pwd)/externall-file-on-host.csv:/app/computer.csv dravenst/go-rest-wol
-```
-
-If you want to run the WOL Webserver Process in the Webserver on a different Port:
-
-```
-# Used if you run in Network Host Mode
-docker run -e "WOLHTTPPORT=9090" -p 9090:9090 -v $(pwd)/externall-file-on-host.csv:/app/computer.csv dravenst/go-rest-wol
-```
-
-Thx https://github.com/dabondi/go-rest-wol https://github.com/sabhiram/go-wol for the WOL code
+Many Thanks to https://github.com/dabondi/go-rest-wol https://github.com/sabhiram/go-wol for starting this effort and the WOL code!
